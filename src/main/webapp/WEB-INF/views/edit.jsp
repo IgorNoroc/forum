@@ -22,7 +22,7 @@
         <table class="table">
             <thead>
             <th>текущие значения: имя : <c:out value="${currentPost.name}"/></th>
-            <th>описание : <c:out value="${currentPost.desc}"/></th>
+            <th>описание : <c:out value="${currentPost.description}"/></th>
             </thead>
             <tbody>
             <form action="<c:url value='/edit'/>" method="post">

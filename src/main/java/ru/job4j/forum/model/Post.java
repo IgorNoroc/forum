@@ -1,16 +1,24 @@
 package ru.job4j.forum.model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
-import java.util.*;
-
-@Component
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String desc;
+    private String description;
     private Date created;
-    private final Set<String> comments = new HashSet<>();
+    @OneToMany()
+    @JoinTable(name = "posts_comments",
+            joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "comment_id"))
+    private final Set<Comment> comments = new HashSet<>();
 
     public static Post of(String name) {
         Post post = new Post();
@@ -18,11 +26,11 @@ public class Post {
         return post;
     }
 
-    public Set<String> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void addComment(String comment) {
+    public void addComment(Comment comment) {
         comments.add(comment);
     }
 
@@ -42,12 +50,12 @@ public class Post {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String desc) {
+        this.description = desc;
     }
 
     public Date getCreated() {
@@ -63,15 +71,12 @@ public class Post {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return id == post.id &&
-                Objects.equals(name, post.name) &&
-                Objects.equals(desc, post.desc) &&
-                Objects.equals(created, post.created);
+        return id == post.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, desc, created);
+        return Objects.hash(id);
     }
 
     @Override
@@ -79,7 +84,7 @@ public class Post {
         return "Post{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", desc='" + desc + '\'' +
+                ", desc='" + description + '\'' +
                 ", created=" + created +
                 ", comments=" + comments +
                 '}';

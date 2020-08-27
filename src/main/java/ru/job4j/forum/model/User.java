@@ -1,8 +1,14 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
     private String email;
     private String password;
@@ -11,6 +17,10 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public User() {
+
     }
 
     public String getName() {

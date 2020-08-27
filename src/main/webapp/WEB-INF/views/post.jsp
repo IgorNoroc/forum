@@ -31,7 +31,7 @@
             </thead>
            <tr>
                <td><c:out value="${post.name}"/></td>
-               <td><c:out value="${post.desc}"/></td>
+               <td><c:out value="${post.description}"/></td>
                <td><c:out value="${post.created}"/></td>
            </tr>
         </table>
@@ -42,7 +42,7 @@
             <tbody>
             <c:forEach items="${comments}" var="comment">
                 <tr>
-                    <td><c:out value="${comment}"/></td>
+                    <td><c:out value="${comment.name}"/></td>
                 </tr>
             </c:forEach>
             </tbody>

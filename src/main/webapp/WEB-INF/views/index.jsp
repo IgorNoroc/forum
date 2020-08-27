@@ -33,7 +33,7 @@
             <c:forEach items="${posts}" var="post">
                 <tr>
                     <td><a href="<c:url value='/comment?id=${post.id}'/>"><c:out value="${post.name}"/></a></td>
-                    <td><c:out value="${post.desc}"/></td>
+                    <td><c:out value="${post.description}"/></td>
                     <td><c:out value="${post.created}"/></td>
                    <td><a href='<c:url value="/edit?id=${post.id}"/>'>
                         <i class="fa fa-edit mr-3">редактировать</i>

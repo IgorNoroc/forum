@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.job4j.forum.model.Comment;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.service.PostService;
 
@@ -33,8 +34,9 @@ public class CommentController {
     @PostMapping("/addComment")
     public String addComment(@RequestParam("id") int id, @RequestParam("comment") String comment) {
         Post post = service.getPost(id);
-        post.getComments().add(comment);
-        service.savePost(post);
+        Comment comm = new Comment(comment, post);
+        post.addComment(comm);
+        service.saveComment(comm);
         return "redirect:/comment?id=" + post.getId();
     }
 }
