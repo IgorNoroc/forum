@@ -49,7 +49,7 @@
         </table>
     </div>
 </div>
-
+<div  style="position: absolute; right: 10%; font-style: italic; color: grey "> <a href="<c:url value="/index"/>">к темам...</a></div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

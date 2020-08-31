@@ -1,6 +1,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,6 +20,7 @@
     <div class="row">
         <h4>Форум job4j</h4>
        <div style="position: absolute; right: 22%; font-style: italic; text-shadow: black"><a href="<c:url value="/save"/>">добавить новую тему</a>  </div>
+        <div style="position: absolute; right: 1%;"><a href="<c:url value='/logout'/>"><c:out value="${user.username}"/> | Выйти... </a> </div>
     </div>
     <div class="row">
         <table class="table">
@@ -34,7 +36,7 @@
                 <tr>
                     <td><a href="<c:url value='/comment?id=${post.id}'/>"><c:out value="${post.name}"/></a></td>
                     <td><c:out value="${post.description}"/></td>
-                    <td><c:out value="${post.created}"/></td>
+                    <td><fmt:formatDate value="${post.created}" pattern="dd MMMM yyyy" /></td>
                    <td><a href='<c:url value="/edit?id=${post.id}"/>'>
                         <i class="fa fa-edit mr-3">редактировать</i>
                     </a></td>

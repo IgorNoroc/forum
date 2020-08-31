@@ -31,7 +31,7 @@
             <form action="<c:url value='/login'/>" method="post">
                 <tr>
                     <td>
-                      <div >почта : <input type="text" name="email"> </div>
+                      <div >имя : <input type="text" name="username"> </div>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
             </form>
             <tr>
                 <td style="color: brown">
-                    <c:out value="${auth}"/>
+                    <c:out value="${errorMessage}"/>
                 </td>
             </tr>
             </tbody>

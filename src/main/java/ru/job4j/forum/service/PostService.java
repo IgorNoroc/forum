@@ -8,6 +8,7 @@ import ru.job4j.forum.repositories.CommentRepository;
 import ru.job4j.forum.repositories.PostRepository;
 import ru.job4j.forum.repositories.UserRepository;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,10 @@ public class PostService {
         return users.findByEmail(email);
     }
 
+    public User findUserByName(String username) {
+       return users.findByUsername(username);
+    }
+
     public Post getPost(int id) {
         return posts.findById(id).get();
     }
@@ -35,8 +40,12 @@ public class PostService {
         posts.save(post);
     }
 
-    public void saveUser(User user) {
-        users.save(user);
+    public void saveUser(User user) throws SQLException {
+        try {
+            users.save(user);
+        } catch (Exception e) {
+            throw new SQLException();
+        }
     }
 
     public void saveComment(Comment comment) {

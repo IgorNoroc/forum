@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                     <td>
-                        описание : <input type="text" name="desc">
+                        описание : <input type="text" name="description">
                     </td>
                 </tr>
                 <tr>

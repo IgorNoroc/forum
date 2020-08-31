@@ -9,26 +9,50 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private String username;
     private String email;
     private String password;
-
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
+    private boolean enabled;
+    @ManyToOne
+    @JoinColumn(name = "authority_id")
+    private Authority authority;
 
     public User() {
 
     }
 
-    public String getName() {
-        return name;
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getId() {
+        return id;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Authority getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -52,13 +76,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password);
+        return id == user.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, email, password);
+        return Objects.hash(id);
     }
 }

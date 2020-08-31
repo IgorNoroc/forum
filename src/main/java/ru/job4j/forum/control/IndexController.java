@@ -1,10 +1,9 @@
 package ru.job4j.forum.control;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.forum.service.PostService;
 
 @Controller
@@ -17,20 +16,12 @@ public class IndexController {
 
     @GetMapping("/")
     public String index() {
-        return "log";
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
-
-        boolean login = service.login(email, password);
-        String auth = login ? "" : "ошибка при вводе почты или пароля";
-        model.addAttribute("auth", auth);
-        return login ? "redirect:/index" : "log";
+        return "login";
     }
 
     @GetMapping("/index")
     public String index(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("posts", service.allPosts());
         return "index";
     }
