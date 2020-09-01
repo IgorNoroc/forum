@@ -24,12 +24,8 @@ public class PostService {
         this.comments = comments;
     }
 
-    public User findUserByEmail(String email) {
-        return users.findByEmail(email);
-    }
-
     public User findUserByName(String username) {
-       return users.findByUsername(username);
+        return users.findByUsername(username);
     }
 
     public Post getPost(int id) {
@@ -50,11 +46,6 @@ public class PostService {
 
     public void saveComment(Comment comment) {
         comments.save(comment);
-    }
-
-    public boolean login(String email, String password) {
-        User user = findUserByEmail(email);
-        return user != null && user.getPassword().equals(password);
     }
 
     public List<Post> allPosts() {
