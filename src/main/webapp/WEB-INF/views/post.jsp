@@ -1,6 +1,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@
            <tr>
                <td><c:out value="${post.name}"/></td>
                <td><c:out value="${post.description}"/></td>
-               <td><c:out value="${post.created}"/></td>
+               <td><fmt:formatDate value="${post.created}" pattern="dd MMMM yyyy" /></td>
            </tr>
         </table>
         <table>

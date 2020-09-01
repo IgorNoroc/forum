@@ -18,7 +18,7 @@ public class CheckUserNameController {
     }
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public @ResponseBody String check(@RequestParam(value = "name", required = false) String name)  {
+    public @ResponseBody String check(@RequestParam(value = "name") String name)  {
         User user = service.findUserByName(name);
         return user != null ?  new Gson().toJson("find") : new Gson().toJson("not");
     }
