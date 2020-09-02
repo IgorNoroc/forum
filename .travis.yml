@@ -1,0 +1,20 @@
+language: java
+jdk:
+  - openjdk14
+
+sudo: false
+
+install: true
+
+script: mvn clean package -DskipTests=true
+
+notifications:
+  email:
+    recipients: "-workulgis@gmail.com"
+    on_success: never
+    on_failure: always
+deploy:
+    provider: heroku
+    api_key:
+      secure: 25hNnpURCmdoLRDK67WYfUInVXcHNBoJoWeH53GLxQWeTvnzdpGZXgcWjUJ2/72W7dYVUuhP1kUpTJa/MkL6EA1/1ovikbgKhkyvC1Sf3DAdqOQskV/qtB0lgYyiBxfUfoh2mMBmmHs/5j4hxjxXU2IHCk4uzMMdCEdxBb4wl/kDBv9vihFxg/gsQt+LdUGZWW/451raozIhwbcwYxmu8q4HHG5B5zLNggpx6OkfB2HC/U60tKPJAgzUIXj0bmwgzsGmMjjte3keLPz4jVYgm5weQHwo6pK+UuHODfR4xxPb85RfGDTcVv9T7pzgJcDo+ttxSx0kNwkW/2zEpl6dAdf7uHkyJeiFQccP1VdpA9G8fsxMI/GxWUNI5RGj878K+k48qZMojy9LfjpOK9fC7eu/lXaUOQ7bYZfdzCRIi8KFTU+51PQoskB38MMdcFWveba/Zsty0jzNjAelFW0dW725y3RoZ481MH2EZg8CdvA4X+fccu13Oo3k1pQtgqW3qzBvUisqvbDFTBKv8lbfURpTZoP56cUSZ1Gb9MVuJMksCiF4CtH1ao2PccLDdlmNOUBpwD4aBYoSPhMBdPFOktaFOZnRKFqGBPuhDN3LqN7vUrK4LoJRHGlTql4Op7icVmVmMGF4phQYljqAz0iKVUuZ5safXnEdBRInYNpe3OU=
+      app: igornorocforum
